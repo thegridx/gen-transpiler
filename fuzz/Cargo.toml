@@ -1,0 +1,73 @@
+[package]
+authors = { workspace = true }
+description = "Fuzz targets for the transpiler, loader, ELF reader, decoder and emulator"
+edition = "2024"
+license = { workspace = true }
+name = "gen-transpiler-fuzz"
+publish = false
+repository = { workspace = true }
+version = "0.0.0"
+
+[package.metadata]
+cargo-fuzz = true
+
+# Used by the test modules the `differential` target includes with `#[path]`, which
+# cargo-machete does not follow.
+[package.metadata.cargo-machete]
+ignored = ["object", "riscv32-emulator", "strum", "user-code-runner"]
+
+[dependencies]
+arbitrary = { version = "=1.4.2", features = ["derive"] }
+libfuzzer-sys = "=0.4.13"
+object = { version = "=0.37.3", features = ["write"] }
+riscv32 = { path = "../crates/riscv32" }
+riscv32-elf = { path = "../crates/riscv32-elf" }
+riscv32-emulator = { path = "../crates/riscv32-emulator" }
+strum = { version = "=0.27.2", default-features = false, features = ["std", "derive"] }
+transpiler = { path = "../crates/transpiler", default-features = false }
+user-code-runner = { path = "../crates/user-code-runner" }
+
+# Not part of the main workspace: fuzzing needs a nightly toolchain.
+[workspace]
+members = ["."]
+
+[workspace.package]
+authors = ["Gen Labs"]
+license = "PolyForm-Small-Business-1.0.0"
+repository = "https://github.com/thegridx/gen-transpiler"
+
+[[bin]]
+doc = false
+name = "decode"
+path = "fuzz_targets/decode.rs"
+test = false
+
+[[bin]]
+doc = false
+name = "read_riscv_elf"
+path = "fuzz_targets/read_riscv_elf.rs"
+test = false
+
+[[bin]]
+doc = false
+name = "transpile"
+path = "fuzz_targets/transpile.rs"
+test = false
+
+[[bin]]
+doc = false
+name = "load"
+path = "fuzz_targets/load.rs"
+test = false
+
+[[bin]]
+doc = false
+name = "differential"
+path = "fuzz_targets/differential.rs"
+test = false
+
+[[bin]]
+doc = false
+name = "transpile_words"
+path = "fuzz_targets/transpile_words.rs"
+test = false

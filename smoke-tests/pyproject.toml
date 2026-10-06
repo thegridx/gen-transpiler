@@ -1,0 +1,53 @@
+[project]
+name = "transpiler-smoke-tests"
+version = "0.1.0"
+description = "End-to-end smoke tests: assemble, transpile and run RISC-V programs through the example loader."
+requires-python = ">=3.12"
+dependencies = ["pyelftools==0.32"]
+
+[dependency-groups]
+dev = ["mypy==2.3.1", "ruff==0.16.9"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E4", "E7", "E9", "F",  # ruff defaults
+    "S",                    # flake8-bandit
+    "ANN",                  # flake8-annotations
+    "I",                    # isort
+    "B",                    # flake8-bugbear
+    "UP007",                # PEP 604 unions
+    "UP045",                # PEP 604 optionals
+    "TRY201",               # bare `raise` when re-raising
+    "N",                    # pep8-naming
+]
+ignore = [
+    # The script drives developer tools (cargo, docker, riscv64-unknown-elf-*) by name
+    # through subprocess, relying on PATH resolution.
+    "S603",
+    "S607",
+]
+
+[tool.ruff.lint.flake8-annotations]
+suppress-none-returning = true
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["transpiler_smoke_tests.py"]
+# pyelftools ships no type annotations; allow calling into it from typed code.
+untyped_calls_exclude = ["elftools"]
+
+[[tool.mypy.overrides]]
+# pyelftools ships no type information.
+module = ["elftools", "elftools.*"]
+ignore_missing_imports = true

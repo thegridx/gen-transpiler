@@ -1,0 +1,3 @@
+# Vendored prebuilt RISC-V test programs: never diff, merge or normalize them.
+*.test_elf binary
+data/**/artifacts/*.o binary

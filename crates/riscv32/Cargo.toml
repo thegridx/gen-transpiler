@@ -1,0 +1,26 @@
+[package]
+authors = { workspace = true }
+description = "RV32IMA instruction model, registers and gas-cost schemes"
+edition = { workspace = true }
+license = { workspace = true }
+name = "riscv32"
+publish = false
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[lib]
+name = "riscv32"
+
+[dependencies]
+strum = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+googletest = { workspace = true }
+rand = { workspace = true }
+rstest = { workspace = true }
+tempfile = { workspace = true }
+
+[lints]
+workspace = true

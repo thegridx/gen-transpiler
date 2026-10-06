@@ -1,0 +1,33 @@
+# Stand-alone RISC-V test program for the `rust-math` smoke-test suite.
+# Not a member of the repository workspace: it only builds for
+# `riscv32im-unknown-none-elf`. Build it with `./build.sh`.
+[package]
+authors = { workspace = true }
+edition = "2024"
+license = { workspace = true }
+name = "math-test"
+publish = false
+repository = { workspace = true }
+version = "0.1.0"
+
+[[bin]]
+name = "math_test"
+path = "src/main.rs"
+
+[profile.release]
+codegen-units = 1
+debug = 2
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = false
+
+[profile.dev]
+panic = "abort"
+
+[workspace]
+
+[workspace.package]
+authors = ["Gen Labs"]
+license = "PolyForm-Small-Business-1.0.0"
+repository = "https://github.com/thegridx/gen-transpiler"

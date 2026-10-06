@@ -1,0 +1,10 @@
+/target/
+**/target/
+**/temp_transpile/
+__pycache__/
+.venv/
+*.pyc
+/target-docker/
+/fuzz/artifacts/
+/fuzz/corpus/
+/fuzz/coverage/

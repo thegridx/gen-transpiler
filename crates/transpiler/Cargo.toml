@@ -1,0 +1,49 @@
+[package]
+authors = { workspace = true }
+description = "Transpiles RISC-V 32-bit ELF programs into sandboxed, gas-metered native aarch64 and x86_64 ELF files"
+edition = { workspace = true }
+license = { workspace = true }
+name = "transpiler"
+publish = false
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[lib]
+name = "transpiler"
+path = "src/lib.rs"
+
+[[bin]]
+name = "transpiler"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[features]
+default = ["cli"]
+# The `transpiler` command-line tool. Library users can turn it off with
+# `default-features = false` to leave out its dependencies.
+cli = ["dep:clap", "dep:env_logger"]
+
+[dependencies]
+clap = { workspace = true, optional = true }
+env_logger = { workspace = true, optional = true }
+log = { workspace = true }
+object = { workspace = true, features = ["read", "write"] }
+riscv32 = { workspace = true }
+riscv32-elf = { workspace = true }
+rustix = { workspace = true }
+strum = { workspace = true }
+thiserror = { workspace = true }
+user-code-runner = { workspace = true }
+
+[dev-dependencies]
+clap = { workspace = true }
+riscv32-emulator = { workspace = true }
+env_logger = { workspace = true }
+googletest = { workspace = true }
+rand = { workspace = true }
+rstest = { workspace = true }
+tempfile = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,3 @@
+# The fuzz targets are test harnesses, not library code: the repository's bans on blocking calls
+# (`../clippy.toml`) are for code a host may run on an async runtime. libFuzzer's
+# `fuzz_target!` macro itself writes files.

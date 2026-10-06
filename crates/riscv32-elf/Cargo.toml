@@ -1,0 +1,27 @@
+[package]
+authors = { workspace = true }
+description = "RISC-V 32-bit ELF reader, and the register-store layout shared with transpiled code"
+edition = { workspace = true }
+license = { workspace = true }
+name = "riscv32-elf"
+publish = false
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[lib]
+name = "riscv32_elf"
+path = "src/lib.rs"
+
+[dependencies]
+log = { workspace = true }
+object = { workspace = true, features = ["read"] }
+riscv32 = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+googletest = { workspace = true }
+strum = { workspace = true }
+
+[lints]
+workspace = true

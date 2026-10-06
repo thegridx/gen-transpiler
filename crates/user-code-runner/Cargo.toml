@@ -1,0 +1,23 @@
+[package]
+authors = { workspace = true }
+description = "Run loop and host-side traits for executing sandboxed transpiled RISC-V code"
+edition = { workspace = true }
+license = { workspace = true }
+name = "user-code-runner"
+publish = false
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[dependencies]
+log = { workspace = true }
+riscv32 = { workspace = true }
+riscv32-elf = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+googletest = { workspace = true }
+rstest = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,20 @@
+[package]
+authors = { workspace = true }
+description = "Interpreter that runs RISC-V 32-bit programs with the same sandbox, gas and exit rules as transpiled code"
+edition = { workspace = true }
+license = { workspace = true }
+name = "riscv32-emulator"
+publish = false
+repository = { workspace = true }
+rust-version = { workspace = true }
+version = { workspace = true }
+
+[dependencies]
+log = { workspace = true }
+riscv32 = { workspace = true }
+riscv32-elf = { workspace = true }
+thiserror = { workspace = true }
+user-code-runner = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,13 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "useGitignore": true,
+  "minWordLength": 4,
+  "ignoreRegExpList": ["0x[0-9a-fA-F]+"],
+  "files": ["**/*.rs", "**/*.md", "**/*.py", "**/*.toml", "**/*.s"],
+  "ignorePaths": ["**/*.lock", "clippy.toml", "data/c_programs/artifacts/*.test_elf"],
+  "dictionaryDefinitions": [
+    { "name": "project-words", "path": "project-words.txt", "addWords": true }
+  ],
+  "dictionaries": ["project-words", "rust", "python", "softwareTerms", "cpp"]
+}
