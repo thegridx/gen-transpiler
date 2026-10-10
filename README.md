@@ -1,10 +1,8 @@
 # gen-transpiler
 
-gen-transpiler converts RISC-V 32-bit (RV32IMA) ELF programs into native aarch64 or x86_64
-ELF files. The output runs directly on the host CPU, but it stays sandboxed and gas-metered:
-every memory access is bounds-checked, every indirect jump is validated, and execution stops
-when the program runs out of gas. This lets a host run programs it does not trust at close to
-native speed.
+**gen-transpiler** converts [RISC-V](https://docs.riscv.org/reference/home/index.html) 32-bit (RV32IMA) ELF programs into native aarch64 or x86_64 ELF files.
+
+The output runs directly on the host CPU, but it is **sandboxed** and **gas-metered**: any memory access is bounds-checked during runtime, every indirect jump is validated, and execution stops when the program runs out of gas. This lets a host run programs it does not trust at close to native speed while using an optional gas-bound limit on execution length. Using RISC-V as the base language guarantees deterministic execution and parity between the transpiled native platforms.
 
 The repository contains the transpiler library and CLI, a loader that maps and runs the
 output, and an example host program. To learn how the transpiled code works, read
